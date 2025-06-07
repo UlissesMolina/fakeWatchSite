@@ -20,7 +20,7 @@ function Hero() {
   }, [])
 
   return (
-    <section className="relative min-h-[500px] flex items-center overflow-hidden">
+    <section className="relative min-h-[300px] sm:min-h-[400px] md:min-h-[500px] flex items-center overflow-hidden">
       {/* Background Images with Transition */}
       {images.map((image, index) => (
         <div
@@ -36,18 +36,18 @@ function Hero() {
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       
       {/* Content */}
-      <div className="relative max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 w-full">
+      <div className="relative max-w-7xl mx-auto py-8 sm:py-12 md:py-16 px-4 sm:px-6 lg:px-8 w-full">
         <div className="text-center">
-          <h2 className="text-4xl font-extrabold text-white sm:text-5xl">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white">
             The ChronoX
           </h2>
-          <p className="mt-4 text-xl text-gray-200">
+          <p className="mt-3 sm:mt-4 text-lg sm:text-xl text-gray-200 max-w-2xl mx-auto">
             The next generation of smartwatches
           </p>
-          <div className="mt-8">
+          <div className="mt-6 sm:mt-8">
             <a
               href="#"
-              className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+              className="inline-flex items-center px-4 sm:px-6 py-2 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 transition-colors duration-200"
             >
               Get Started
             </a>
@@ -61,7 +61,7 @@ function Hero() {
           <button
             key={index}
             onClick={() => setCurrentImageIndex(index)}
-            className={`w-3 h-3 rounded-full transition-colors duration-300 ${
+            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-colors duration-300 ${
               index === currentImageIndex ? 'bg-white' : 'bg-white/50'
             }`}
           />
