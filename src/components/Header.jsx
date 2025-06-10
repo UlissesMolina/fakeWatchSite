@@ -1,55 +1,44 @@
 import React, { useState } from 'react'
+import { useTheme } from '../context/ThemeContext'
+import { Sun, Moon } from 'lucide-react'
 
 function Header() {
+  const { darkMode, setDarkMode } = useTheme()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="bg-white shadow-sm">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        <div className="flex items-center">
-          <h1 className="text-2xl font-bold text-gray-900">Device</h1>
-        </div>
-        
-        {/* Mobile menu button */}
-        <div className="md:hidden">
+    <header className="sticky top-0 z-50 bg-white dark:bg-gray-800 shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
+          {/* Theme Toggle */}
           <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="text-gray-600 hover:text-gray-900 focus:outline-none"
+            onClick={() => setDarkMode(!darkMode)}
+            className="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+            aria-label="Toggle dark mode"
           >
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              {isMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
+            {darkMode ? (
+              <Sun className="w-5 h-5 text-gray-800 dark:text-gray-200" />
+            ) : (
+              <Moon className="w-5 h-5 text-gray-800 dark:text-gray-200" />
+            )}
           </button>
-        </div>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-8">
-          <a href="#" className="text-gray-600 hover:text-gray-900">Home</a>
-          <a href="#" className="text-gray-600 hover:text-gray-900">Features</a>
-          <a href="#" className="text-gray-600 hover:text-gray-900">About</a>
-          <a href="#" className="text-gray-600 hover:text-gray-900">Contact</a>
-          <a href="#" className="text-gray-600 hover:text-gray-900">Quote</a>
+          {/* Navigation Links */}
+          <nav className="flex space-x-8">
+            <a href="#features" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+              Features
+            </a>
+            <a href="#specs" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+              Specs
+            </a>
+            <a href="#pricing" className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white">
+              Pricing
+            </a>
+          </nav>
         </div>
-      </nav>
-
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a href="#" className="block px-3 py-2 text-gray-600 hover:text-gray-900">Home</a>
-            <a href="#" className="block px-3 py-2 text-gray-600 hover:text-gray-900">Features</a>
-            <a href="#" className="block px-3 py-2 text-gray-600 hover:text-gray-900">About</a>
-            <a href="#" className="block px-3 py-2 text-gray-600 hover:text-gray-900">Contact</a>
-            <a href="#" className="block px-3 py-2 text-gray-600 hover:text-gray-900">Quote</a>
-          </div>
-        </div>
-      )}
+      </div>
     </header>
   )
 }
 
-export default Header 
+export default Header
